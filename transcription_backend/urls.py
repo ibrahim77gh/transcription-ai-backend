@@ -7,7 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('djoser.urls')),
     path('auth/', include('authentication.urls')),
-    path('auth/', include('transcription.urls')),
+    path('', include('transcription.urls')),
     # path('auth/', include('djoser.social.urls')),
 ]
 
