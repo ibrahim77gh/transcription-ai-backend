@@ -37,6 +37,7 @@ class CustomProviderAuthView(ProviderAuthView):
 
         if response.status_code == 201:
             set_tokens(response)
+        print('API HIT',response)
 
         return response
 
