@@ -34,7 +34,7 @@ class TranscriptionView(ModelViewSet):
             temp_audio_file.close()
             # Load the temporary audio file
             temp_audio_path = temp_audio_file.name
-            
+                
             # Now proceed with transcribing
             model = whisper.load_model("medium")
             result = model.transcribe(audio=temp_audio_path, verbose=True, language='urdu')
@@ -43,4 +43,9 @@ class TranscriptionView(ModelViewSet):
             os.unlink(temp_audio_path)
             
             print(result["text"])
+
+            # Save the transcription to your database
+            # user = request.user
+            # transcription_instance = Transcription.objects.create(text=result["text"], user=user)
+
             return Response(data={'text':result["text"]}, status=201)
