@@ -28,12 +28,11 @@ class TranscriptionView(ModelViewSet):
 
         # Save the audio file temporarily
 
-        audio_sample = "audio.wav"  # Path to your Urdu audio file in the current directory
 
         model = whisper.load_model("medium")
         waveform, sampling_rate = librosa.load(audio_file, sr=16000)
 
-        result = model.transcribe(audio_file, language="ur", fp16=False, verbose=True)
+        result = model.transcribe(waveform, language="urdu", fp16=False, verbose=True)
         print(result["text"])
         # with open('temp_audio.wav', 'wb') as temp_audio:
         #     for chunk in audio_file.chunks():
